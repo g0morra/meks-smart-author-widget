@@ -36,6 +36,11 @@ This plugin is created by <a href="http://mekshq.com" target="_blank">MeksHQ</a>
 
 - For any questions, error reports and suggestions please email support@mekshq.com or visit http://mekshq.com
 
+== Screenshots ==
+
+1. Widget options interface
+2. Widget in action
+
 == Changelog ==
 
 = 1.0 =
