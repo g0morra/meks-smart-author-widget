@@ -4,7 +4,7 @@ Donate link: http://mekshq.com/
 Tags: widget, sidebar, author, user, avatar, profile
 Requires at least: 3.0
 Tested up to: 3.8
-Stable tag: 1.0
+Stable tag: 1.0.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 
@@ -42,6 +42,9 @@ This plugin is created by <a href="http://mekshq.com" target="_blank">MeksHQ</a>
 2. Widget in action
 
 == Changelog ==
+
+= 1.0.1 =
+* Link to avatar option bug fixed
 
 = 1.0 =
 * Initial release

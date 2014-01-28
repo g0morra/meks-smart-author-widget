@@ -59,7 +59,7 @@ class MKS_Author_Widget extends WP_Widget {
 			 		$pre_avatar = '';
 			 		$post_avatar = '';
 			 	}
- 				echo get_avatar( get_the_author_meta('ID', $user_id), $instance['avatar_size'] ) . $post_avatar;
+ 				echo $pre_avatar. get_avatar( get_the_author_meta('ID', $user_id), $instance['avatar_size'] ) . $post_avatar;
  			?>
  		<?php endif; ?>
 		

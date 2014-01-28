@@ -4,7 +4,7 @@ Plugin Name: Meks Smart Author Widget
 Plugin URI: http://mekshq.com
 Description: Easily display your author/user profile info inside WordPress widget. Smart feature of this plugin is user/author "auto detection" which means that it can optionaly show author of current post on single post templates or on specific author archive.
 Author: MeksHQ
-Version: 1.0
+Version: 1.0.1
 Author URI: http://mekshq.com
 */
 
