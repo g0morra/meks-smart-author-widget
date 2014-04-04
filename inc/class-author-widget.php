@@ -17,7 +17,7 @@ class MKS_Author_Widget extends WP_Widget {
 	
 
 	function enqueue_styles(){
- 		wp_register_style( 'meks-author-widget', MKS_AUTHOR_WIDGET_URL.'css/style.css', false, '1.0.0' );
+ 		wp_register_style( 'meks-author-widget', MKS_AUTHOR_WIDGET_URL.'css/style.css', false, MKS_AUTHOR_WIDGET_VER );
     wp_enqueue_style( 'meks-author-widget' );
  }
 
