@@ -43,6 +43,9 @@ This plugin is created by <a href="http://mekshq.com" target="_blank">MeksHQ</a>
 
 == Changelog ==
 
+= 1.0.2 =
+* Added translation files (en_US)
+
 = 1.0.1 =
 * Link to avatar option bug fixed
 
