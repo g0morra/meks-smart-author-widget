@@ -4,7 +4,9 @@
 /*-----------------------------------------------------------------------------------*/
 
 class MKS_Author_Widget extends WP_Widget { 
-
+  
+  private $users_split_at = 200; //Do not run get_users() if there are more than 200 users on the website
+	
 	function MKS_Author_Widget() {
 		$widget_ops = array( 'classname' => 'mks_author_widget', 'description' => __('Use this widget to display author/user profile info', 'meks') );
 		$control_ops = array( 'id_base' => 'mks_author_widget' );
@@ -13,6 +15,7 @@ class MKS_Author_Widget extends WP_Widget {
 		if(!is_admin()){
 		  add_action( 'wp_enqueue_scripts', array($this,'enqueue_styles'));
 		}
+		
 	}
 	
 
@@ -130,8 +133,11 @@ class MKS_Author_Widget extends WP_Widget {
 			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Title', 'meks'); ?>:</label>
 			<input id="<?php echo $this->get_field_id( 'title' ); ?>" type="text" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>" class="widefat" />
 		</p>
-		
+
 		<p>
+			
+			<?php if( $this->count_users() <= $this->users_split_at ) : ?>
+			
 			<?php $authors = get_users(); ?>
 			<label for="<?php echo $this->get_field_id( 'author' ); ?>"><?php _e('Choose author/user', 'meks'); ?>:</label>
 			<select name="<?php echo $this->get_field_name( 'author' ); ?>" id="<?php echo $this->get_field_id( 'author' ); ?>" class="widefat">
@@ -139,6 +145,14 @@ class MKS_Author_Widget extends WP_Widget {
 				<option value="<?php echo $author->ID; ?>" <?php selected($author->ID, $instance['author']); ?>><?php echo $author->data->user_login; ?></option>
 			<?php endforeach; ?>
 			</select>
+			
+			<?php else: ?>
+			
+			<label for="<?php echo $this->get_field_id( 'author' ); ?>"><?php _e('Enter author/user ID', 'meks'); ?>:</label>
+			<input id="<?php echo $this->get_field_id( 'author' ); ?>" type="text" name="<?php echo $this->get_field_name( 'author' ); ?>" value="<?php echo $instance['author']; ?>" class="small-text" />
+	  	
+			<?php endif; ?>
+			
 		</p>
 		
 		<p>
@@ -198,6 +212,15 @@ class MKS_Author_Widget extends WP_Widget {
 		
 		
 	<?php
+	}
+	
+	/* Check total number of users on the website */
+	function count_users(){
+		$user_count = count_users();
+		if(isset($user_count['total_users']) && !empty($user_count['total_users'])){
+			return $user_count['total_users'];
+		}
+		return 0;
 	}
 }
 
