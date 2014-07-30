@@ -6,6 +6,7 @@
 class MKS_Author_Widget extends WP_Widget { 
   
   private $users_split_at = 200; //Do not run get_users() if there are more than 200 users on the website
+  var $defaults;
 	
 	function MKS_Author_Widget() {
 		$widget_ops = array( 'classname' => 'mks_author_widget', 'description' => __('Use this widget to display author/user profile info', 'meks') );
@@ -15,30 +16,48 @@ class MKS_Author_Widget extends WP_Widget {
 		if(!is_admin()){
 		  add_action( 'wp_enqueue_scripts', array($this,'enqueue_styles'));
 		}
-		
+
+		$this->defaults = array( 
+				'title' => __('About Author', 'meks'),
+				'author' => 0,
+				'auto_detect' => 0,
+				'display_name' => 1,
+				'display_avatar' => 1,
+				'display_desc' => 1,
+				'display_all_posts' => 1,
+				'avatar_size' => 64,
+				'name_to_title' => 0,
+				'link_to_name' => 0,
+				'link_to_avatar' => 0,
+				'link_text' => __('View all posts', 'meks'),
+			);
+
 	}
 	
 
 	function enqueue_styles(){
  		wp_register_style( 'meks-author-widget', MKS_AUTHOR_WIDGET_URL.'css/style.css', false, MKS_AUTHOR_WIDGET_VER );
-    wp_enqueue_style( 'meks-author-widget' );
- }
+    	wp_enqueue_style( 'meks-author-widget' );
+ 	}
 
 	
 	function widget( $args, $instance ) {
+		
 		extract( $args );
+
+		$instance = wp_parse_args( (array) $instance, $this->defaults );
 		
 		//Check for user_id
-			$user_id = $instance['author'];
-			if($instance['auto_detect']){
-				if(is_author()){
- 					$obj = get_queried_object();
- 					$user_id = $obj->data->ID;
- 				} elseif(is_single()){
- 					$obj = get_queried_object();
- 					$user_id = $obj->post_author;
- 				}
+		$user_id = $instance['author'];
+		if($instance['auto_detect']){
+			if(is_author()){
+ 				$obj = get_queried_object();
+ 				$user_id = $obj->data->ID;
+ 			} elseif(is_single()){
+ 				$obj = get_queried_object();
+ 				$user_id = $obj->post_author;
  			}
+ 		}
  			
  		$author_link = $instance['display_all_posts'] ? get_author_posts_url(get_the_author_meta('ID',$user_id)) : false;
  		
@@ -50,8 +69,6 @@ class MKS_Author_Widget extends WP_Widget {
 			echo $before_title . $title . $after_title;
 		}
 		?>
-		
-
 		
 		<?php if($instance['display_avatar']) : ?>
 			<?php
@@ -112,22 +129,7 @@ class MKS_Author_Widget extends WP_Widget {
 
 	function form( $instance ) {
 
-		$defaults = array( 
-				'title' => __('About Author', 'meks'),
-				'author' => 0,
-				'auto_detect' => 0,
-				'display_name' => 1,
-				'display_avatar' => 1,
-				'display_desc' => 1,
-				'display_all_posts' => 1,
-				'avatar_size' => 64,
-				'name_to_title' => 0,
-				'link_to_name' => 0,
-				'link_to_avatar' => 0,
-				'link_text' => __('View all posts', 'meks'),
-			);
-			
-		$instance = wp_parse_args( (array) $instance, $defaults ); ?>
+		$instance = wp_parse_args( (array) $instance, $this->defaults ); ?>
 		
 		<p>
 			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Title', 'meks'); ?>:</label>

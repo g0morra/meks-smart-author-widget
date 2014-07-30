@@ -3,8 +3,8 @@ Contributors: mekshq
 Donate link: http://mekshq.com/
 Tags: widget, sidebar, author, user, avatar, profile
 Requires at least: 3.0
-Tested up to: 3.9
-Stable tag: 1.0.3
+Tested up to: 3.9.1
+Stable tag: 1.0.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 
@@ -24,7 +24,7 @@ Simple plugin which allows you to display author/user info inside WordPress widg
 * Replace widget title with user display name (optional)
 
 
-This plugin is created by <a href="http://mekshq.com" target="_blank">MeksHQ</a>
+Smart Author Widget plugin is created by <a href="http://mekshq.com" target="_blank">MeksHQ</a>
 
 == Installation ==
 
@@ -42,6 +42,9 @@ This plugin is created by <a href="http://mekshq.com" target="_blank">MeksHQ</a>
 2. Widget in action
 
 == Changelog ==
+
+= 1.0.4 =
+* Full compatibility with new WordPress customizer in WP 3.9+
 
 = 1.0.3 =
 * Optimization for websites with large number of users
