@@ -16,6 +16,7 @@ Simple plugin which allows you to display author/user info inside WordPress widg
 
 ### Features
 
+
 * Flexible display options
 * Auto detect post author on single post and author templates
 * Custom avatar size
@@ -25,6 +26,10 @@ Simple plugin which allows you to display author/user info inside WordPress widg
 
 
 Smart Author Widget plugin is created by <a href="http://mekshq.com" target="_blank">MeksHQ</a>
+
+### Live preview?
+
+You can see Smart Author Widget live example on our <a href="http://mekshq.com/demo/throne" target="_blank">Throne theme demo website</a>
 
 == Installation ==
 
