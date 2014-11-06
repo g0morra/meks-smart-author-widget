@@ -32,6 +32,9 @@ class MKS_Author_Widget extends WP_Widget {
 				'link_text' => __('View all posts', 'meks'),
 			);
 
+		//Allow themes or plugins to modify default parameters
+		$this->defaults = apply_filters('mks_author_widget_modify_defaults', $this->defaults);
+
 	}
 	
 
@@ -101,7 +104,7 @@ class MKS_Author_Widget extends WP_Widget {
 		<?php endif; ?>
 			
 		<?php if($author_link && $instance['link_text']) : ?>
-			<a href="<?php echo $author_link; ?>" class="mks_author_link"><?php echo $instance['link_text']; ?></a>
+			<div class="mks_autor_link_wrap"><a href="<?php echo $author_link; ?>" class="mks_author_link"><?php echo $instance['link_text']; ?></a></div>
 		<?php endif; ?>
 
 		<?php
