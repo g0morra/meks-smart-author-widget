@@ -3,8 +3,8 @@ Contributors: mekshq
 Donate link: http://mekshq.com/
 Tags: widget, sidebar, author, user, avatar, profile
 Requires at least: 3.0
-Tested up to: 4.2.1
-Stable tag: 1.0.4
+Tested up to: 4.2.2
+Stable tag: 1.0.5
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 
@@ -47,6 +47,9 @@ You can see Smart Author Widget live example on our <a href="http://mekshq.com/d
 2. Widget in action
 
 == Changelog ==
+
+= 1.0.5 =
+* Added an option to specify custom URL and override author default archive link
 
 = 1.0.4 =
 * Full compatibility with new WordPress customizer in WP 3.9+

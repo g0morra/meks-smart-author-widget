@@ -30,6 +30,7 @@ class MKS_Author_Widget extends WP_Widget {
 				'link_to_name' => 0,
 				'link_to_avatar' => 0,
 				'link_text' => __('View all posts', 'meks'),
+				'link_url' => ''
 			);
 
 		//Allow themes or plugins to modify default parameters
@@ -61,8 +62,14 @@ class MKS_Author_Widget extends WP_Widget {
  				$user_id = $obj->post_author;
  			}
  		}
- 			
- 		$author_link = $instance['display_all_posts'] ? get_author_posts_url(get_the_author_meta('ID',$user_id)) : false;
+ 		
+ 		if(	$instance['link_url'] && $instance['display_all_posts'] ){
+ 			$author_link = $instance['link_url'];
+ 		} else {
+ 			$author_link = $instance['display_all_posts'] ? get_author_posts_url(get_the_author_meta('ID',$user_id)) : false;
+ 		}
+
+
  		
 		$title =  $instance['name_to_title'] ? get_the_author_meta('display_name', $user_id) : apply_filters('widget_title', $instance['title'] );
 				
@@ -125,6 +132,7 @@ class MKS_Author_Widget extends WP_Widget {
 		$instance['link_to_name'] = isset($new_instance['link_to_name']) ? 1 : 0;
 		$instance['link_to_avatar'] = isset($new_instance['link_to_avatar']) ? 1 : 0;
 		$instance['link_text'] = strip_tags( $new_instance['link_text'] );
+		$instance['link_url'] = !empty( $new_instance['link_url'] ) ? esc_url($new_instance['link_url']) : '';
 		$instance['avatar_size'] = !empty($new_instance['avatar_size']) ? absint($new_instance['avatar_size']) : 64;
 
 		return $instance;
@@ -212,6 +220,11 @@ class MKS_Author_Widget extends WP_Widget {
 	  		<label for="<?php echo $this->get_field_id( 'link_text' ); ?>"><?php _e('Link text:', 'meks'); ?></label>
 	  		<input id="<?php echo $this->get_field_id( 'link_text' ); ?>" type="text" name="<?php echo $this->get_field_name( 'link_text' ); ?>" value="<?php echo $instance['link_text']; ?>" class="widefat"/>
 	  		<small class="howto"><?php _e('Specify text for "all posts" link if you want to show separate link', 'meks'); ?></small>
+	  	</li>
+	  	<li>
+	  		<label for="<?php echo $this->get_field_id( 'link_url' ); ?>"><?php _e('Override author link URL:', 'meks'); ?></label>
+	  		<input id="<?php echo $this->get_field_id( 'link_url' ); ?>" type="text" name="<?php echo $this->get_field_name( 'link_url' ); ?>" value="<?php echo $instance['link_url']; ?>" class="widefat"/>
+	  		<small class="howto"><?php _e('Specify custom URL if you want to override default author archive link', 'meks'); ?></small>
 	  	</li>
 	  </ul>
 		
