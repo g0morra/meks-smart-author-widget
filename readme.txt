@@ -48,6 +48,9 @@ You can see Smart Author Widget live example on our <a href="http://mekshq.com/d
 
 == Changelog ==
 
+= 1.0.6 =
+* Added a possibility for developers to override widget template through WordPress themes
+
 = 1.0.5 =
 * Added an option to specify custom URL and override author default archive link
 
@@ -65,3 +68,5 @@ You can see Smart Author Widget live example on our <a href="http://mekshq.com/d
 
 = 1.0 =
 * Initial release
+
+
