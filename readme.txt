@@ -68,3 +68,5 @@ You can see Smart Author Widget live example on our <a href="http://mekshq.com/d
 
 = 1.0 =
 * Initial release
+
+
