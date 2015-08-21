@@ -4,7 +4,7 @@ Donate link: http://mekshq.com/
 Tags: widget, sidebar, author, user, avatar, profile
 Requires at least: 3.0
 Tested up to: 4.3
-Stable tag: 1.0.7
+Stable tag: 1.0.8
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 
@@ -48,7 +48,7 @@ You can see Smart Author Widget live example on our <a href="http://mekshq.com/d
 
 == Changelog ==
 
-= 1.0.7 =
+= 1.0.8 =
 * Full compatibility with WordPress 4.3
 
 = 1.0.6 =
